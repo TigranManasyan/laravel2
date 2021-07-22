@@ -8,6 +8,12 @@
     <title>@yield("page-title")</title>
 </head>
 <body>
+@include("includes.NavBar")
+@section('nav-bar')
+    @parent
+    <h2>1sdd</h2>
+    @endsection
 @yield('content')
+
 </body>
 </html>

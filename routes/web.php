@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name("home");
 
 Route::get('about', function () {
     return view('about');
-});
+})->name("about");
+
+Route::get('form', function () {
+    return view('form');
+})->name("form");
+
+Route::post('form', [FormController::class, 'send'])->name("form_send");
 
 
 Route::get('users', function () {
