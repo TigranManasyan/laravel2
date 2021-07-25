@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('home');
 })->name("home");
 
-Route::get('about', function () {
+Route::get('/about', function () {
     return view('about');
 })->name("about");
 
@@ -44,3 +45,14 @@ Route::get('users', function () {
 /*Route::get('users/{num1}/{num2}', function ($num1, $num2) {
     return pow($num1, $num2);
 });*/
+
+
+//Categories
+
+Route::get('categories/new', function() {
+    return view('categories.new_category');
+})->name('new_category');
+
+Route::post('new_category',
+    [CategoryController::class, 'add']
+)->name('add_category');
