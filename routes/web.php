@@ -49,10 +49,18 @@ Route::get('users', function () {
 
 //Categories
 
-Route::get('categories/new', function() {
-    return view('categories.new_category');
-})->name('new_category');
 
-Route::post('new_category',
-    [CategoryController::class, 'add']
-)->name('add_category');
+
+Route::prefix('categories')->group(function() {
+    Route::get('/new', function() {
+        return view('categories.new_category');
+    })->name('new_category');
+
+    Route::post('new_category',
+        [CategoryController::class, 'add']
+    )->name('add_category');
+
+    Route::get('/all', [CategoryController::class, 'all_data'])->name('all');
+    Route::get('/all/{id}', [CategoryController::class, 'one_category'])->name('one_category');
+    Route::get('all/{id}/delete/', [CategoryController::class, 'delete'])->name('delete_category');
+});
