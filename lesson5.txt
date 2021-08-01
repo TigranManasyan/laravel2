@@ -1,0 +1,9 @@
+1. stexcel model migrate-i het miasin
+php artisan make:model Post -m
+2. Migrateum tal dashter@ 
+php artisan migrate
+3. stexcum enq request
+php artisan make:request PostRequest
+4. stexcum enq controller resource
+php artisan make:controller --model=Post --resource
+5. views-i mej posts folder, folder-i mej posts.blade.php fayl
