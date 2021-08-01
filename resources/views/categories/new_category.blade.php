@@ -12,7 +12,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
-
         @include("includes.messages")
     </div>
 @endsection

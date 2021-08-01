@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +64,8 @@ Route::prefix('categories')->group(function() {
     Route::get('/all', [CategoryController::class, 'all_data'])->name('all');
     Route::get('/all/{id}', [CategoryController::class, 'one_category'])->name('one_category');
     Route::get('all/{id}/delete/', [CategoryController::class, 'delete'])->name('delete_category');
+    Route::get('all/{id}/edit/', [CategoryController::class, 'edit'])->name('edit_category');
+    Route::post('all/{id}/update/',  [CategoryController::class, 'update'])->name('update_category');
 });
+
+Route::resource("posts", PostController::class);

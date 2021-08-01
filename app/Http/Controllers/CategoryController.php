@@ -33,4 +33,18 @@ class CategoryController extends Controller
         $res -> delete();
         return redirect() -> route('all');
     }
+
+    public function edit($id) {
+        $category = new Category();
+
+        return view('categories.update_category', ['category' => $category->find($id)]);
+    }
+
+    public function update(CategoryRequest $request, $id) {
+        $category = Category::find($id);
+        $category -> category_name = $request -> category_name;
+        $category -> updated_at = NOW();
+        $category->save();
+        return redirect()->route('one_category', $request -> id);
+    }
 }
