@@ -9,7 +9,13 @@
                <div>
                    <h2>{{ $post -> title }}</h2>
                    <p><strong>Published</strong> {{ $post-> created_at }}</p>
-                   <button class="btn btn-primary">More</button>
+{{--                   <form action="{{ route('posts.show', $post->id) }}" method="get">--}}
+{{--                       <button class="btn btn-primary" type="submit"> More </button>--}}
+{{--                   </form>--}}
+                   <button class="btn btn-primary" type="submit">
+                       <a href="{{route('posts.show', $post->id)}}">More</a>
+                   </button>
+
                </div>
             @endforeach
         @endif

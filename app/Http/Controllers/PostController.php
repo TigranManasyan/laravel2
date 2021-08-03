@@ -36,7 +36,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->all());
+        return back();
     }
 
     /**
@@ -47,7 +48,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.one_post', compact('post'));
     }
 
     /**
@@ -58,7 +59,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.form', compact('post'));
     }
 
     /**
@@ -70,7 +71,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        return back();
     }
 
     /**
@@ -81,6 +83,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }

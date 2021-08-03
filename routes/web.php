@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -68,4 +69,23 @@ Route::prefix('categories')->group(function() {
     Route::post('all/{id}/update/',  [CategoryController::class, 'update'])->name('update_category');
 });
 
+Route::get('posts/new', function() {
+    return view('posts.form');
+});
+
 Route::resource("posts", PostController::class);
+
+
+
+Route::prefix('images')->group(function() {
+    Route::get("/all", [ImageController::class, 'index'])->name('all_images');
+
+    Route::get("/new", function() {
+        return view('image.form');
+    })->name('new_images');
+
+    Route::post(
+        '/new',
+        [ImageController::class, 'store']
+    )->name('add_image');
+});
