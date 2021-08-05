@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,6 @@ Route::prefix('images')->group(function() {
         [ImageController::class, 'store']
     )->name('add_image');
 });
+
+
+Route::get('/products', [ProductController::class, 'index']);
